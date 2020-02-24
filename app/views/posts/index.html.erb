@@ -1,7 +1,9 @@
 <h1 class = "ui container center aligned">
-  <button class="ui basic button large black">
-    <b>Add Post</b>
-  </button>
+  <% if logged_in?%>
+    <button class="ui basic button large black">
+      <b>Add Post</b>
+    </button>
+  <%end%>
 </h1>
 <% @posts.each do |post| %>
   <div class="ui card container center aligned">
