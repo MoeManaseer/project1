@@ -15,14 +15,16 @@
       <i class="comment icon"></i>
       3 comments
     </div>
-    <div class="content left aligned">
-      <% post.comments.each do |comment| %>
-        <div>
-          <em><bold><%= comment.user.username %>:-&nbsp;</em></bold>
-          <em><%= comment.info %></em>
-        </div>
-      <% end %>
-    </div>
+    <% if post.comments.any? %>
+      <div class="content left aligned">
+        <% post.comments.each do |comment| %>
+          <div>
+            <em><bold><%= comment.user.username %>:-&nbsp;</em></bold>
+            <em><%= comment.info %></em>
+          </div>
+        <% end %>
+      </div>
+    <%end%>
     <div class="extra content left aligned">
       <div class="ui large transparent  input">
         <input type="text" placeholder="Add Comment...">
