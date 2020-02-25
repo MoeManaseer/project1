@@ -1,8 +1,6 @@
 <h1 class = "ui container center aligned">
   <% if logged_in?%>
-    <button class="ui basic button large black">
-      <b>Add Post</b>
-    </button>
+    <%= link_to "Add post", post_path, class:"ui basic button large" %>
   <%end%>
 </h1>
 <% @posts.each do |post| %>
@@ -13,6 +11,11 @@
       <%= post.info %>
     </div>
     </div>
+    <div class="content">
+    <% if current_user == post.user %>
+     <h4> edit and delete here </h4>
+    <% end %>
+  </div>
     <div class="content left aligned">
       <i class="comment icon"></i>
       3 comments
@@ -27,10 +30,13 @@
         <% end %>
       </div>
     <%end%>
-    <div class="extra content left aligned">
-      <div class="ui large transparent  input">
-        <input type="text" placeholder="Add Comment...">
+    <%= form_for(@comment, html: {class: "ui reply form",role:"form"},url:comment_path) do |f| %>
+      <div class="field">
+        <div class = "ui fluid input">
+          <%= f.text_field :info ,placeholder: "Enter comment.." %>
+          <%= f.hidden_field :post_id, :value => post.id %>
+        </div>
       </div>
-    </div>
+    <%end%>
   </div>
 <% end %>

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :user_logged_in, only: [:new,:create]
   def new
 
   end
@@ -21,5 +22,12 @@ class UsersController < ApplicationController
   def destroy
     session[:user_id]= nil;
     redirect_to login_path
+  end
+  private
+  def user_logged_in
+    if logged_in?
+      flash[:error] = "You are logged in."
+      redirect_to root_path
+    end
   end
 end

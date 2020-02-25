@@ -1,0 +1,10 @@
+<br>
+<div class = "w3-display-middle">
+  <h1> Create post </h1> <br> <br>
+  <%= form_for(:form, html: {class:"ui form",role:"form"}, url: post_path) do |f| %>
+    <div class="field">
+      <%= f.text_area :info, :cols => "10", :rows => "18" %>
+    </div> <br>
+    <%= f.button "Add post", class: "ui submit button center aligned" %>
+  <% end %>
+</div>

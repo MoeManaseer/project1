@@ -11,8 +11,10 @@
 
   <body>
     <%= render 'layouts/menubar' %>
-
-    <div class="ui container">
+    <div class="ui container w3-display-middle">
+      <% if flash.any? %>
+        <%= render 'layouts/messages' %>
+      <%end%>
       <%= yield %>
     </div>
   </body>
